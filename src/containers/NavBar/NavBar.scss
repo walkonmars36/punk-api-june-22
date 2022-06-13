@@ -1,0 +1,12 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+
+  color: grey;
+  border: 1px solid blue;
+  margin: 1em;
+
+  ul {
+    border: 1px solid white;
+  }
+}
