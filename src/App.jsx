@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react";
 
-import axios from "axios";
 import "./App.scss";
 
 import NavBar from "./containers/NavBar/NavBar";
@@ -13,7 +12,6 @@ function App() {
 
   // Initial api call sets all beers to initial state - beers
 
- 
   const getBeers = async () => {
     const API_URL = "https://api.punkapi.com/v2/beers";
     let url = API_URL;
@@ -23,7 +21,11 @@ function App() {
     setBeers(data);
   };
 
-  /// useEffect to mount setfilteredBeers
+  useEffect(() => {
+    getBeers();
+  }, []);
+
+  /// useEffect to mount setFilteredBeers
   useEffect(() => {
     setFilteredBeers(beers);
   }, [beers]);
