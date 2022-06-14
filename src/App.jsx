@@ -3,8 +3,8 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 import "./App.scss";
 
-import NavBar from "./containers/NavBar";
-import Main from "./containers/Main";
+import NavBar from "./containers/NavBar/NavBar";
+import Main from "./containers/Main/Main";
 
 function App() {
   const [beers, setBeers] = useState([]);
@@ -13,17 +13,15 @@ function App() {
 
   // Initial api call sets all beers to initial state - beers
 
-  const API_URL = "https://api.punkapi.com/v2/beers?page=2&per_page=80";
+ 
+  const getBeers = async () => {
+    const API_URL = "https://api.punkapi.com/v2/beers";
+    let url = API_URL;
 
-  useEffect(() => {
-    axios
-      .get(API_URL)
-      .then((res) => setBeers(res.data))
-
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    const res = await fetch(url);
+    const data = await res.json();
+    setBeers(data);
+  };
 
   /// useEffect to mount setfilteredBeers
   useEffect(() => {
