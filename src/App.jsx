@@ -16,6 +16,7 @@ function App() {
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
+    console.log(url);
   };
 
   useEffect(() => {
