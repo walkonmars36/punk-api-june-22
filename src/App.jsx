@@ -7,17 +7,11 @@ import Main from "./containers/Main/Main";
 
 function App() {
   const [beers, setBeers] = useState([]);
-  const [filteredBeers, setFilteredBeers] = useState([]);
-  const [filterBy, setFilterBy] = useState("all");
+  const [searchBeers, setSearchBeers] = useState([]);
+  const [filterBy, setFilterBy] = useState([]);
 
-  // Initial api call sets all beers to initial state - beers
-
-  const getBeers = async (checkFilter) => {
+  const getBeers = async () => {
     let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
-
-    if (checkFilter !== "all") {
-      url += `&brewed_before=12-2010`;
-    }
 
     const res = await fetch(url);
     const data = await res.json();
@@ -25,27 +19,38 @@ function App() {
   };
 
   useEffect(() => {
-    getBeers(filterBy);
-  }, [filterBy]);
+    getBeers();
+  }, []);
 
-  /// useEffect to mount setFilteredBeers
+  //////////////////////////////////
+
   useEffect(() => {
-    setFilteredBeers(beers);
+    setSearchBeers(beers);
   }, [beers]);
 
+  ////////////////////////////
+
+  const searchFilter = (event) => {
+    if (event.target.value) {
+      const searchBeers = beers.filter((beer) => beer.name.toLowerCase().includes(event.target.value));
+      setSearchBeers(searchBeers);
+    } else {
+      setSearchBeers(beers);
+    }
+  };
+
+  /////////////////////////
+
   const handleChecked = (e) => {
-    console.log(beers);
-    setFilterBy(e.target.value);
-    console.log(filterBy);
-    console.log(beers);
+    console.log(e.target.checked);
   };
 
   return (
     <div className="app">
       <div className="content">
-        <NavBar beers={beers} setFilteredBeers={setFilteredBeers} handleChecked={handleChecked} filterBy={filterBy} />
+        <NavBar handleChecked={handleChecked} searchFilter={searchFilter} filterBy={filterBy} />
 
-        <Main beers={filteredBeers} />
+        <Main beers={searchBeers} />
       </div>
     </div>
   );
