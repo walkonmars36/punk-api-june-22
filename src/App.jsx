@@ -8,36 +8,34 @@ import Main from "./containers/Main/Main";
 function App() {
   const [beers, setBeers] = useState([]);
   const [filteredBeers, setFilteredBeers] = useState([]);
-  const [filterBy, setFilterBy] = useState("all");
+  const [filterBy, setFilterBy] = useState("");
+  const [url, setUrl] = useState("https://api.punkapi.com/v2/beers?page=1&per_page=80");
 
   // Initial api call sets all beers to initial state - beers
 
-  const getBeers = async (checkFilter) => {
-    let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
-
-    if (checkFilter !== "all") {
-      url += `&brewed_before=12-2010`;
-    }
-
+  const getBeers = async () => {
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
+    console.log(url);
   };
 
   useEffect(() => {
     getBeers(filterBy);
-  }, [filterBy]);
-
-  /// useEffect to mount setFilteredBeers
-  useEffect(() => {
     setFilteredBeers(beers);
-  }, [beers]);
+  }, [url]);
+
+  const changeUrl = (checkFilter) => {
+    if (checkFilter === "classic-range") {
+      setUrl("https://api.punkapi.com/v2/beers?page=1&per_page=80&brewed_before=12-2010");
+      console.log(checkFilter);
+    }
+  };
 
   const handleChecked = (e) => {
-    console.log(beers);
     setFilterBy(e.target.value);
-    console.log(filterBy);
-    console.log(beers);
+    changeUrl(filterBy);
+    console.log(e.target.value);
   };
 
   return (
