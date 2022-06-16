@@ -55,11 +55,15 @@ function App() {
 
   const handleChecked = (e) => {
     console.log(e.target.checked);
-    if (e.target.checked === highABV) {
-      e.target.checked = e.target.value;
-      setFilterBy(e.target.value);
-      console.log(filterBy);
+    console.log(e.target.value);
+
+    let clickedCheck = e.target.checked;
+    let clickedValue = e.target.value;
+
+    if (clickedValue === "High ABV (> 6.%)") {
+      setFilterBy(highABV);
     }
+    console.log(filterBy);
   };
 
   return (
@@ -67,7 +71,7 @@ function App() {
       <div className="content">
         <NavBar handleChecked={handleChecked} searchFilter={searchFilter} filters={filters} />
 
-        <Main beers={searchBeers} />
+        <Main beers={filterBy > 0 ? filterBy : searchBeers} />
       </div>
     </div>
   );
