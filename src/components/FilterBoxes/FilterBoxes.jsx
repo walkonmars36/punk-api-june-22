@@ -1,13 +1,13 @@
 import React from "react";
 import "./FilterBoxes.scss";
+import FilterItem from "../FilterItem/FilterItem";
 
-const FilterBoxes = ({handleChecked}) => {
+const FilterBoxes = ({handleChecked, filters}) => {
   return (
     <div className="filter-boxes">
-      <div>
-        <input type="checkbox" name="bum" value="cheese" onChange={handleChecked} />
-        <label htmlFor="bum">click me</label>
-      </div>
+      {filters.map((filter, index) => {
+        return <FilterItem label={filter} key={index} handleChecked={handleChecked} />;
+      })}
     </div>
   );
 };

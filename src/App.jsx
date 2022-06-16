@@ -16,7 +16,6 @@ function App() {
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
-    console.log(url);
   };
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function App() {
     setSearchBeers(beers);
   }, [beers]);
 
-  ////////////////////////////
+  /////////////////////////////////
 
   const searchFilter = (event) => {
     if (event.target.value) {
@@ -40,16 +39,33 @@ function App() {
     }
   };
 
-  /////////////////////////
+  ////////////////////////////////
+
+  const filters = ["High ABV (> 6.%)", "Classic Range", "Acidic (PH < 4)"];
+
+  // console.log(beers);
+
+  const highABV = beers.filter((beer) => beer.abv > 6);
+  const classicRange = beers.filter((beer) => beer.first_brewed.split("/")[4] === "0");
+  const acidic = beers.filter((beer) => beer.ph < 4);
+
+  // console.log(classicRange);
+  // console.log(highABV);
+  // console.log(acidic);
 
   const handleChecked = (e) => {
     console.log(e.target.checked);
+    if (e.target.checked === highABV) {
+      e.target.checked = e.target.value;
+      setFilterBy(e.target.value);
+      console.log(filterBy);
+    }
   };
 
   return (
     <div className="app">
       <div className="content">
-        <NavBar handleChecked={handleChecked} searchFilter={searchFilter} filterBy={filterBy} />
+        <NavBar handleChecked={handleChecked} searchFilter={searchFilter} filters={filters} />
 
         <Main beers={searchBeers} />
       </div>

@@ -2,11 +2,11 @@ import "./NavBar.scss";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import FilterBoxes from "../../components/FilterBoxes/FilterBoxes";
 
-const NavBar = ({searchFilter, handleChecked}) => {
+const NavBar = ({searchFilter, filters, handleChecked}) => {
   return (
     <div className="nav">
       <div>
-        <FilterBoxes handleChecked={handleChecked} />
+        <FilterBoxes filters={filters} handleChecked={handleChecked} />
       </div>
       <div>
         <SearchBox searchFilter={searchFilter} />
