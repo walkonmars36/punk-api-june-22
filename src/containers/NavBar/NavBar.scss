@@ -1,12 +1,12 @@
+@use "../../assets/sass/reset" as *;
+
 .nav {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  // align-items: center;
+
+  padding: 1em;
 
   color: grey;
   border: 1px solid blue;
-  margin: 1em;
-
-  ul {
-    border: 1px solid white;
-  }
 }

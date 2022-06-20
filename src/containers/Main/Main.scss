@@ -1,15 +1,6 @@
+@use "../../assets/sass/reset/" as *;
+
 .main {
-  border: 1px solid #f5f5f5;
+  border: 3px solid;
   margin: 1em;
-  padding: 1em;
-
-  & .pagination {
-    display: flex;
-    justify-content: center;
-    margin: 2em 0;
-
-    & button {
-      margin-left: 0.5em;
-    }
-  }
 }

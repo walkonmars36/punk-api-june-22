@@ -1,7 +1,11 @@
+@use "./assets/sass/reset" as *;
+
 .app {
   border: 1px solid red;
-  width: 90%;
+  // width: 90%;
   margin: 0 auto;
+  background-color: #01cbcb;
+  background-image: linear-gradient(90deg, #01cbcb 0%, #96ded2 100%);
 }
 
 .content {

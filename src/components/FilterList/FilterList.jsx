@@ -4,7 +4,7 @@ import FilterItem from "../FilterItem/FilterItem";
 
 const FilterList = ({handleChecked, filters}) => {
   return (
-    <div className="filter-List">
+    <div className="filter-list">
       {filters.map((filter, index) => {
         return <FilterItem filterLabel={filter} key={index} index={index} handleChecked={handleChecked} />;
       })}

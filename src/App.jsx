@@ -68,7 +68,9 @@ function App() {
 
   const handleChecked = (e) => {
     const duplicateArr = [...checkedArr];
+
     let index = duplicateArr.indexOf(e.target.id);
+
     if (index === -1) {
       duplicateArr.push(e.target.id);
       setCheckedArr(duplicateArr);

@@ -1,6 +1,16 @@
-.search {
-  background-color: grey;
-  color: #1e212b;
+@use "../../assets/sass/reset" as *;
 
-  padding: 1em;
+.search {
+  display: flex;
+  margin: 3rem 0;
+  &__input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 1.5em 2em;
+  }
 }
+
+// input[type="checkbox"] {
+//   display: none;
+// }
