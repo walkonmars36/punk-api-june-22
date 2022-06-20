@@ -9,6 +9,7 @@ function App() {
   const [beers, setBeers] = useState([]);
   const [filteredBeers, setFilteredBeers] = useState([]);
   const [checkedArr, setCheckedArr] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   const getBeers = async () => {
     let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
@@ -64,7 +65,7 @@ function App() {
     const AbvClassic = beers.filter((beer) => beer.abv > 6 && beer.first_brewed.split("/")[1] <= 2009);
     setFilteredBeers(AbvClassic);
   };
-  //
+  /////////
 
   const handleChecked = (e) => {
     const duplicateArr = [...checkedArr];
@@ -103,6 +104,10 @@ function App() {
   };
 
   ///////////////////////////////////////
+
+  const toggleFilters = () => {
+    setShowFilters(!showFilters);
+  };
 
   return (
     <div className="app">
