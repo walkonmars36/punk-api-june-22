@@ -7,8 +7,7 @@ import Main from "./containers/Main/Main";
 
 function App() {
   const [beers, setBeers] = useState([]);
-  const [searchBeers, setSearchBeers] = useState([]);
-  const [filterBy, setFilterBy] = useState([]);
+  const [filteredBeers, setFilteredBeers] = useState([]);
 
   const getBeers = async () => {
     let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
@@ -20,58 +19,73 @@ function App() {
 
   useEffect(() => {
     getBeers();
-  }, []);
 
-  //////////////////////////////////
-
-  useEffect(() => {
-    setSearchBeers(beers);
+    setFilteredBeers(beers);
   }, [beers]);
 
   /////////////////////////////////
 
-  const searchFilter = (event) => {
-    if (event.target.value) {
-      const searchBeers = beers.filter((beer) => beer.name.toLowerCase().includes(event.target.value));
-      setSearchBeers(searchBeers);
+  const searchFilter = (e) => {
+    if (e.target.value) {
+      const searchTerm = beers.filter((beer) => beer.name.toLowerCase().includes(e.target.value));
+      console.log(searchTerm);
+      setFilteredBeers(searchTerm);
     } else {
-      setSearchBeers(beers);
+      setFilteredBeers(beers);
     }
   };
 
   ////////////////////////////////
 
-  const filters = ["High ABV (> 6.%)", "Classic Range", "Acidic (PH < 4)"];
+  const filterHighAbv = () => {
+    const highAbvBeer = beers.filter((beer) => beer.abv > 6);
+    console.log(highAbvBeer);
+    setFilteredBeers(highAbvBeer);
+  };
 
-  // console.log(beers);
+  //
 
-  const highABV = beers.filter((beer) => beer.abv > 6);
-  const classicRange = beers.filter((beer) => beer.first_brewed.split("/")[4] === "0");
-  const acidic = beers.filter((beer) => beer.ph < 4);
+  const filterClassic = () => {
+    const classicBeer = beers.filter((beer) => beer.first_brewed.split("/")[1] <= 2009);
+    console.log(classicBeer);
+    setFilteredBeers(classicBeer);
+  };
 
-  // console.log(classicRange);
-  // console.log(highABV);
-  // console.log(acidic);
+  //
+
+  const filterAcidic = () => {
+    const acidicBeer = beers.filter((beer) => beer.ph < 4);
+    console.log(acidicBeer);
+    setFilteredBeers(acidicBeer);
+  };
+
+  //
 
   const handleChecked = (e) => {
-    console.log(e.target.checked);
-    console.log(e.target.value);
-
-    let clickedCheck = e.target.checked;
-    let clickedValue = e.target.value;
-
-    if (clickedValue === "High ABV (> 6.%)") {
-      setFilterBy(highABV);
+    if (e.target.id === "0") {
+      filterHighAbv();
     }
-    console.log(filterBy);
+
+    if (e.target.id === "1") {
+      filterClassic();
+    }
+
+    if (e.target.id === "2") {
+      filterAcidic();
+    }
+
+    console.log(e.target.value);
+    console.log(e.target.id);
   };
+
+  ///////////////////////////////////////
 
   return (
     <div className="app">
       <div className="content">
-        <NavBar handleChecked={handleChecked} searchFilter={searchFilter} filters={filters} />
+        <NavBar handleChecked={handleChecked} searchFilter={searchFilter} />
 
-        <Main beers={filterBy > 0 ? filterBy : searchBeers} />
+        <Main beers={filteredBeers} />
       </div>
     </div>
   );
