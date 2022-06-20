@@ -8,6 +8,7 @@ import Main from "./containers/Main/Main";
 function App() {
   const [beers, setBeers] = useState([]);
   const [filteredBeers, setFilteredBeers] = useState([]);
+  const [checkedArr, setCheckedArr] = useState([]);
 
   const getBeers = async () => {
     let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
@@ -15,13 +16,12 @@ function App() {
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
+    setFilteredBeers(data);
   };
 
   useEffect(() => {
     getBeers();
-
-    setFilteredBeers(beers);
-  }, [beers]);
+  }, []);
 
   /////////////////////////////////
 
@@ -57,24 +57,46 @@ function App() {
     const acidicBeer = beers.filter((beer) => beer.ph < 4);
     console.log(acidicBeer);
     setFilteredBeers(acidicBeer);
+    console.log(checkedArr);
   };
 
+  const highAbvClassic = () => {
+    const AbvClassic = beers.filter((beer) => beer.abv > 6 && beer.first_brewed.split("/")[1] <= 2009);
+    setFilteredBeers(AbvClassic);
+  };
   //
 
   const handleChecked = (e) => {
-    if (e.target.id === "0") {
+    const duplicateArr = [...checkedArr];
+    let index = duplicateArr.indexOf(e.target.id);
+    if (index === -1) {
+      duplicateArr.push(e.target.id);
+      setCheckedArr(duplicateArr);
+    } else {
+      duplicateArr.splice(index, 1);
+      setCheckedArr(duplicateArr);
+    }
+
+    if (duplicateArr.includes("0") && duplicateArr.includes("1")) {
+      highAbvClassic();
+    }
+
+    if (duplicateArr.includes("0")) {
       filterHighAbv();
     }
 
-    if (e.target.id === "1") {
+    if (duplicateArr.includes("1")) {
       filterClassic();
     }
 
-    if (e.target.id === "2") {
+    if (duplicateArr.includes("2")) {
       filterAcidic();
     }
 
-    console.log(e.target.value);
+    if (duplicateArr.length === 0) {
+      setFilteredBeers(beers);
+    }
+
     console.log(e.target.id);
   };
 
