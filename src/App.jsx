@@ -9,7 +9,6 @@ function App() {
   const [beers, setBeers] = useState([]);
   const [filteredBeers, setFilteredBeers] = useState([]);
   const [checkedArr, setCheckedArr] = useState([]);
-  const [showFilters, setShowFilters] = useState(false);
 
   const getBeers = async () => {
     let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
@@ -104,10 +103,6 @@ function App() {
   };
 
   ///////////////////////////////////////
-
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
 
   return (
     <div className="app">

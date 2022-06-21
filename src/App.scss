@@ -1,7 +1,7 @@
 @use "./assets/sass/reset" as *;
+@use "./assets/sass/variables" as *;
 
 .app {
-  border: 1px solid red;
   padding: 1em;
   margin: 0 auto;
   background-color: #01cbcb;
