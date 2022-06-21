@@ -4,9 +4,7 @@
 .nav {
   display: flex;
   flex-direction: column;
-
   color: grey;
-  border: 1px solid;
 
   @media (min-width: 600px) {
     display: flex;
