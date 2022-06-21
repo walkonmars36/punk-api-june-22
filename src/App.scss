@@ -2,10 +2,9 @@
 @use "./assets/sass/variables" as *;
 
 .app {
-  padding: 1em;
   margin: 0 auto;
-  background-color: #01cbcb;
-  background-image: linear-gradient(90deg, #01cbcb 0%, #96ded2 100%);
+  background-color: $color-aqua;
+  background-image: linear-gradient(90deg, $color-aqua 0%, $color-pale-aqua 100%);
 }
 
 .content {

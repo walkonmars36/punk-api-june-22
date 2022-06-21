@@ -4,10 +4,9 @@
 .nav {
   display: flex;
   flex-direction: column;
-  // margin: 0.5rem;
 
   color: grey;
-  // border-bottom: 10px solid $color-aqua;
+  border: 1px solid;
 
   @media (min-width: 600px) {
     display: flex;
