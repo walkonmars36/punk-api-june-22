@@ -28,13 +28,11 @@ const Card = ({beers}) => {
       <div className="card-front__description">{description}</div>
       <div>
         <h3 className="card-front__description-heading">Perfect with ...</h3>
-        <div>
-          {food_pairing.map((food) => (
-            <ul>
-              <li>{food}</li>
-            </ul>
+        <ul>
+          {food_pairing.map((food, index) => (
+            <li key={index}>{food}</li>
           ))}
-        </div>
+        </ul>
       </div>
       <button className="card-front__button" onClick={handleClick}>
         Close
