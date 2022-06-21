@@ -11,12 +11,22 @@ function App() {
   const [checkedArr, setCheckedArr] = useState([]);
 
   const getBeers = async () => {
-    let url = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
+    const allBeersArr = [];
 
-    const res = await fetch(url);
-    const data = await res.json();
-    setBeers(data);
-    setFilteredBeers(data);
+    for (let i = 0; i < 7; i++) {
+      let url = `https://api.punkapi.com/v2/beers?page=${i + 1}&per_page=50`;
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      data.forEach((beer) => {
+        allBeersArr.push(beer);
+      });
+    }
+
+    setBeers(allBeersArr);
+    setFilteredBeers(allBeersArr);
+    console.log(allBeersArr);
   };
 
   useEffect(() => {
