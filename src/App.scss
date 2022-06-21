@@ -3,8 +3,8 @@
 
 .app {
   margin: 0 auto;
-  background-color: $color-aqua;
-  background-image: linear-gradient(90deg, $color-aqua 0%, $color-pale-aqua 100%);
+  background-color: #f0f0f0;
+  background-image: linear-gradient(90deg, #f0f0f0 0%, #ffffff 100%);
 
   &__content {
     display: flex;
@@ -15,5 +15,11 @@
     width: 20%;
     align-self: center;
     margin-top: 2rem;
+
+    @media (min-width: 768px) {
+      align-self: flex-start;
+      margin-left: 7.5rem;
+      width: 10%;
+    }
   }
 }

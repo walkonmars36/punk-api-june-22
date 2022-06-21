@@ -5,11 +5,15 @@
   display: flex;
   flex-direction: column;
   color: grey;
-  padding: 1em;
+  padding: 3em 0;
+  background-color: $color-aqua;
+
+  margin-top: 2rem;
 
   &__filter-list-heading {
     margin-bottom: 1rem;
     text-align: center;
+    color: whitesmoke;
   }
 
   @media (min-width: 600px) {

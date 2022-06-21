@@ -1,6 +1,9 @@
 @use "../../assets/sass/reset/" as *;
+@use "../../assets/sass/variables" as *;
 
 .main {
   padding: 1em;
   min-height: 100vh;
+  background-color: $color-aqua;
+  background-image: linear-gradient(90deg, $color-pale-aqua 0%, $color-aqua 100%);
 }
