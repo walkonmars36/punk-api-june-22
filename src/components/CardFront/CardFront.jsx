@@ -7,10 +7,10 @@ const Card = ({beers}) => {
     <div className="card-front">
       <div className="card-front__content">
         <img className="card-front__img" src={image_url} alt="" />
-        <p>{name}</p>
-        <p>{tagline}</p>
-        <p>First Brewed - {first_brewed}</p>
-        <p>ABV - {abv}</p>
+        <h3 className="card-front__heading">{name}</h3>
+        <h4 className="card-front__tagline">{tagline}</h4>
+        <p className="card-front__first-brewed">First Brewed - {first_brewed}</p>
+        <p className="card-front__abv">ABV - {abv}</p>
       </div>
     </div>
   );

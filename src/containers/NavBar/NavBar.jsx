@@ -11,7 +11,7 @@ const NavBar = ({searchFilter, handleChecked}) => {
         <SearchBox searchFilter={searchFilter} />
       </div>
       <div>
-        <h2>Filter Your Search</h2>
+        <h2 className="nav__filter-list-heading">or filter your search ...</h2>
         <FilterList filters={filters} handleChecked={handleChecked} />
       </div>
     </div>

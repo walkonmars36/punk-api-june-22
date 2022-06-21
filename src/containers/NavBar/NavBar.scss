@@ -5,11 +5,14 @@
   display: flex;
   flex-direction: column;
   color: grey;
+  padding: 1em;
+
+  &__filter-list-heading {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 
   @media (min-width: 600px) {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-around;
     align-items: center;
   }
 }
