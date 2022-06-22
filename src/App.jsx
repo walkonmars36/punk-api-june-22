@@ -70,11 +70,7 @@ function App() {
     console.log(checkedArr);
   };
 
-  const highAbvClassic = () => {
-    const AbvClassic = beers.filter((beer) => beer.abv > 6 && beer.first_brewed.split("/")[1] <= 2009);
-    setFilteredBeers(AbvClassic);
-  };
-  /////////
+  ///////////////////////////////////
 
   const handleChecked = (e) => {
     const duplicateArr = [...checkedArr];
@@ -87,10 +83,6 @@ function App() {
     } else {
       duplicateArr.splice(index, 1);
       setCheckedArr(duplicateArr);
-    }
-
-    if (duplicateArr.includes("0") && duplicateArr.includes("1")) {
-      highAbvClassic();
     }
 
     if (duplicateArr.includes("0")) {
