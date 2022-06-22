@@ -1,5 +1,6 @@
 @use "../../assets/sass/reset" as *;
 @use "../../assets/sass/variables" as *;
+@use "../../assets/sass/fonts" as *;
 
 .card-front {
   &__content {
@@ -34,8 +35,12 @@
     background-color: white;
     padding: 0.5em 1em;
 
-    &:hover {
+    &:hover,
+    &:focus {
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      border: 2px solid black;
+      background-color: black;
+      color: white;
       transform: scale(1.1);
     }
   }
