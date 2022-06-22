@@ -38,7 +38,7 @@ function App() {
   const searchFilter = (e) => {
     if (e.target.value) {
       const searchTerm = beers.filter((beer) => beer.name.toLowerCase().includes(e.target.value));
-      console.log(searchTerm);
+
       setFilteredBeers(searchTerm);
     } else {
       setFilteredBeers(beers);
