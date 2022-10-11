@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  color: #525252;
+  color: $color-card-text;
   padding: 0.5em 1.5em;
   margin: 0.5rem 0;
   border-radius: 7px;
@@ -22,7 +22,7 @@
   }
 
   @media (min-width: 600px) {
-    margin-right: 1rem;
+    // margin-right: 1rem;
 
     &:hover,
     &:focus {

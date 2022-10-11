@@ -7,12 +7,9 @@ const NavBar = ({searchFilter, handleChecked}) => {
 
   return (
     <div className="nav">
-      <div>
-        <SearchBox searchFilter={searchFilter} />
-      </div>
-      <div>
-        <h2 className="nav__filter-list-heading">or filter your search ...</h2>
+      <div className="nav__content">
         <FilterList filters={filters} handleChecked={handleChecked} />
+        <SearchBox searchFilter={searchFilter} />
       </div>
     </div>
   );

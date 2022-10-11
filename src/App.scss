@@ -10,16 +10,4 @@
     display: flex;
     flex-direction: column;
   }
-
-  &__logo {
-    width: 20%;
-    align-self: center;
-    margin-top: 2rem;
-
-    @media (min-width: 768px) {
-      align-self: flex-start;
-      margin-left: 7.5rem;
-      width: 10%;
-    }
-  }
 }

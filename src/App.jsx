@@ -1,9 +1,9 @@
 import {useState, useEffect} from "react";
 import "./App.scss";
-import logo from "./assets/images/brewdog-logo.png";
 
 import NavBar from "./containers/NavBar/NavBar";
 import Main from "./containers/Main/Main";
+import Header from "./components/Header/Header";
 
 function App() {
   const [beers, setBeers] = useState([]);
@@ -109,7 +109,7 @@ function App() {
   return (
     <div className="app">
       <div className="app__content">
-        <img className="app__logo" src={logo} alt="brewdog logo" />
+        <Header />
 
         <NavBar handleChecked={handleChecked} searchFilter={searchFilter} />
 

@@ -1,11 +1,11 @@
 @use "../../assets/sass/reset" as *;
+@use "../../assets/sass/variables" as *;
 
 .filter-list {
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 600px) {
-    display: flex;
-    flex-direction: row;
+  &__heading {
+    color: $color-white;
   }
 }
