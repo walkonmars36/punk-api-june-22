@@ -6,6 +6,7 @@ import CardList from "../../components/CardList/CardList";
 const Main = ({beers}) => {
   return (
     <div className="main">
+      <h2 className="main__heading">View All Beers ...</h2>
       <div>
         <CardList beers={beers} />
       </div>

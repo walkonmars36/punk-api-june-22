@@ -4,8 +4,10 @@
 .header {
   display: flex;
   align-items: center;
-
   padding: 1em;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
 
   @media (min-width: 768px) {
     padding: 3em;
@@ -23,11 +25,16 @@
   &__title {
     font-family: "Cabin Sketch", cursive;
     font-size: 4rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     color: $color-black;
 
     @media (min-width: 600px) {
       font-size: 8rem;
+      margin-left: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 10rem;
       margin-left: 3rem;
     }
   }

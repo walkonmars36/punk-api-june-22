@@ -6,4 +6,9 @@
   min-height: 100vh;
   background-color: $color-aqua;
   background-image: linear-gradient(90deg, $color-pale-aqua 0%, $color-aqua 100%);
+
+  &__heading {
+    color: $color-white;
+    margin: 0.5em 0;
+  }
 }
