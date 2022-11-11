@@ -1,4 +1,4 @@
-# Punk-API Project
+# Punk-API Project 🍺
 
 ## Technology Consultancy 12 week programme at \_Nology.io.
 
